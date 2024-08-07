@@ -4,7 +4,7 @@
 
 1. Clone o repositório:
 ```sh
-git clone <repository_url>
+git clone https://github.com/leonardo403/payment-lima.git
 ```
 
 2. Navegue até o diretório do projeto:
