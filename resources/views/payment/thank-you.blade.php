@@ -8,13 +8,13 @@
     <div class="container">
         <h2>Thank You</h2>
         @if ($paymentData['billingType'] == 'BOLETO')
-            <p>Boleto created successfully. Click <a href="{{ $paymentData['invoiceUrl'] }}">here</a> to view the boleto.</p>
+            <p>Boleto gerado com sucesso. Clicar <a href="{{ $paymentData['invoiceUrl'] }}">aqui</a> para ver o boleto.</p>
         @elseif ($paymentData['billingType'] == 'PIX')
-            <p>Pix created successfully.</p>
+            <p>Pix gerado com sucesso.</p>
             <p>QR Code: <img src="{{ $paymentData['pixQrCode'] }}" alt="QR Code"></p>
             <p>Copia e Cola: {{ $paymentData['pixCopiaCola'] }}</p>
         @elseif ($paymentData['billingType'] == 'CREDIT_CARD')
-            <p>Payment processed successfully.</p>
+            <p>Payment processado com sucesso.</p>
         @endif
     </div>
 </body>

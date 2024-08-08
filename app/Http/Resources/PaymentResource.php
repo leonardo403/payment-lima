@@ -16,17 +16,13 @@ class PaymentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'customer' => [
-                'name' => $this->customer['name'],
-                'email' => $this->customer['email'],
-                'cpfCnpj' => $this->customer['cpfCnpj'],
-            ],
+            'customer' => $this->customer,
             'billingType' => $this->billingType,
             'value' => $this->value,
             'dueDate' => $this->dueDate,
             'invoiceUrl' => $this->invoiceUrl,
-            'pixQrCode' => $this->pixQrCode,
-            'pixCopiaCola' => $this->pixCopiaCola,
+            //'pixQrCode' => $this->pixQrCode,
+            //'pixCopiaCola' => $this->pixCopiaCola,
             'status' => $this->status,
         ];
     }

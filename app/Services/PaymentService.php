@@ -1,7 +1,8 @@
 <?php
 namespace App\Services;
 
-use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+use App\Models\Payment;
 
 class PaymentService
 {
@@ -9,7 +10,7 @@ class PaymentService
     protected $apiKey;
     protected $url;
 
-    public function __construct(Http $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
         $this->apiKey = config('services.asaas.api_key');
@@ -30,12 +31,29 @@ class PaymentService
                     'cpfCnpj' => $data['cpf'],
                 ],
                 'billingType' => $data['payment_method'],
-                'value' => 100.00, // Valor do pagamento
+                'value' => 100.00, // Valor do pagamento,
+                'dueDate' => '2024-08-12',
                 // Outros campos conforme necessário
             ],
         ]);
 
-        return json_decode($response->getBody(), true);
+        $paymentData =  json_decode($response->getBody(), true);
+
+        Payment::create([
+            'payment_method' => $data['payment_method'],
+            'customer_name' => $data['name'],
+            'customer_email' => $data['email'],
+            'customer_cpf' => $data['cpf'],
+            'billing_type' => $paymentData['billingType'],
+            'value' => 100.00,
+            'due_date' => $paymentData['dueDate'] ?? null,
+            'invoice_url' => $paymentData['invoiceUrl'] ?? null,
+            'pix_qr_code' => $paymentData['pixQrCode'] ?? null,
+            'pix_copia_cola' => $paymentData['pixCopiaCola'] ?? null,
+            'status' => $paymentData['status'],
+        ]);
+
+        return $paymentData;
     }
 }
 
