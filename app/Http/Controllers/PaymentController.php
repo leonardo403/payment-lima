@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PaymentFormRequest;
 use App\Services\PaymentService;
-use App\Http\Resources\PaymentResource;
+use App\Http\Resources\{PaymentResource,PaymentPixResource};
 
 class PaymentController extends Controller
 {

@@ -15,15 +15,19 @@ class PaymentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'customer' => $this->customer,
-            'billingType' => $this->billingType,
-            'value' => $this->value,
-            'dueDate' => $this->dueDate,
-            'invoiceUrl' => $this->invoiceUrl,
-            //'pixQrCode' => $this->pixQrCode,
-            //'pixCopiaCola' => $this->pixCopiaCola,
-            'status' => $this->status,
+            'id' => $this->id ?? null,
+            'customer' => [
+                'name' => $this->name ?? null,
+                'email' => $this->email ?? null,
+                'cpfCnpj' => $this->cpfCnpj ?? null,
+            ],
+            'billingType' => $this->billingType ?? null,
+            'value' => $this->value ?? null,
+            'dueDate' => $this->dueDate ?? null,
+            'invoiceUrl' => $this->invoiceUrl ?? null,
+            'pixQrCode' => $this->encodedImage ?? null,
+            'pixCopiaCola' => $this->payload ?? null,
+            'status' => $this->status ?? null,
         ];
     }
 }

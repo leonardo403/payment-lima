@@ -21,11 +21,21 @@ class PaymentFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules =  [
             'payment_method' => 'required|string',
             'name' => 'required|string',
             'email' => 'required|email',
             'cpf' => 'required|string',
         ];
+
+        if ($this->get('payment_method') === 'CREDIT_CARD') {
+            $rules = array_merge($rules, [
+                'card_number' => 'required|string|max:16',
+                'card_expiry' => 'required|string|max:5',
+                'card_cvv' => 'required|string|max:4',
+            ]);
+        }
+
+        return $rules;
     }
 }
