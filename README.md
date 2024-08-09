@@ -33,6 +33,19 @@ php artisan migrate
 ```sh
 php artisan serve
 ```
+9. Iniciar o Projeto com Docker Compose
+```sh
+docker-compose up -d
+```
+10. Acessar a Aplicação
+ Após iniciar os containers, a aplicação estará disponível em http://localhost:8000.
+
+11. Migrar o Banco de Dados
+Para rodar as migrações do banco de dados, execute:
+```sh
+docker-compose exec app php artisan migrate
+```
+
 # Testes
 Execute os testes:
 ```sh
@@ -42,8 +55,8 @@ php artisan test
 # Como usar
 1. Acesse a página de pagamento:
 
-```bash
-http://localhost:8000/payment
+```sh
+http://localhost:8000/
 ```
 2. Preencha o formulário de pagamento e envie.
 
