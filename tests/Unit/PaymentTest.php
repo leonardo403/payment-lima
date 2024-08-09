@@ -41,7 +41,7 @@ class PaymentTest extends TestCase
             'value' => 100.00,
         ];
 
-        $result = $this->paymentService->createPayment($data);
+        $result = $this->paymentService->processPayment($data);
 
         $this->assertArrayHasKey('id', $result);
         $this->assertEquals('CREDIT_CARD', $result['billingType']);
@@ -74,7 +74,7 @@ class PaymentTest extends TestCase
             'value' => 100.00,
         ];
 
-        $result = $this->paymentService->createPayment($data);
+        $result = $this->paymentService->processPayment($data);
 
         $this->assertArrayHasKey('id', $result);
         $this->assertEquals('PIX', $result['billingType']);
@@ -107,7 +107,7 @@ class PaymentTest extends TestCase
             'value' => 100.00,
         ];
 
-        $result = $this->paymentService->createPayment($data);
+        $result = $this->paymentService->processPayment($data);
 
         $this->assertArrayHasKey('id', $result);
         $this->assertEquals('BOLETO', $result['billingType']);

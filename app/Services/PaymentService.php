@@ -62,6 +62,7 @@ class PaymentService
                     'access_token' => $this->apiKey,
                 ],
             ]);
+
             $paymentData = json_decode($responsePix->getBody(), true);
         }
 
@@ -78,8 +79,7 @@ class PaymentService
             'pix_copia_cola' => $paymentData['payload'] ?? null,
             'status' => $paymentData['status'] ?? null,
         ]);
-        //dd($paymentData);
+
         return $paymentData;
     }
 }
-
