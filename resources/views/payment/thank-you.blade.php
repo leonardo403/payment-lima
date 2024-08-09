@@ -14,7 +14,7 @@
             <p>QR Code: <img src="data:image/png;base64, {{ $paymentData['pixQrCode'] }}" alt="QR Code"  style='display:block; width:300px;height:300px;'>
             <p>Copia e Cola: {{ $paymentData['pixCopiaCola'] }}</p>
         @elseif ($paymentData['billingType'] == 'CREDIT_CARD')
-            <p>Payment processado com sucesso.</p>
+            <p>Pagamento com Cartão de Crédito processado com sucesso.</p>
         @endif
     </div>
 </body>

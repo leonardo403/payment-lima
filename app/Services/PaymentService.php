@@ -65,7 +65,7 @@ class PaymentService
             $paymentData = json_decode($responsePix->getBody(), true);
         }
 
-        /*Payment::create([
+        Payment::create([
             'payment_method' => $data['payment_method'],
             'customer_name' => $data['name'],
             'customer_email' => $data['email'],
@@ -76,8 +76,8 @@ class PaymentService
             'invoice_url' => $paymentData['invoiceUrl'] ?? null,
             'pix_qr_code' => $paymentData['encodedImage'] ?? null,
             'pix_copia_cola' => $paymentData['payload'] ?? null,
-            'status' => $paymentData['status'],
-        ]);*/
+            'status' => $paymentData['status'] ?? null,
+        ]);
         //dd($paymentData);
         return $paymentData;
     }

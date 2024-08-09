@@ -23,7 +23,7 @@ class PaymentController extends Controller
     public function processPayment(PaymentFormRequest $request)
     {
         $paymentData = $this->paymentService->processPayment($request->validated());
-        //dd($paymentData);
+
         $paymentResource = new PaymentResource((object) $paymentData);
 
         return redirect()->route('thank-you')->with('paymentData', $paymentResource->toArray($request));
